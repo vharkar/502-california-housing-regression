@@ -147,7 +147,7 @@ def make_prediction(clicks, longitude, latitude, housing_median_age, total_rooms
         std_inputs = std_scaler.transform(inputs)
 
         # Make predictions on the testing dataset (using k-Nearest neighbors)
-        y_preds = kneighbor_reg.predict(std_inputs)
+        y = kneighbor_reg.predict(std_inputs)
 
         #y = lin_reg.predict(std_inputs)
         formatted_y = "${:,.2f}".format(y[0])
