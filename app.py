@@ -22,8 +22,8 @@ with open('analysis/model_components/std_scaler.pkl', 'rb') as f:
     std_scaler=pickle.load(f)
 with open('analysis/model_components/lin_reg.pkl', 'rb') as f:
     lin_reg=pickle.load(f)
-with open('analysis/model_components/kneighbor_reg.pkl', 'wb') as f:
-    knn_model=pickle.load(f)
+with open('analysis/model_components/kneighbor_reg.pkl', 'rb') as f:
+    kneighbor_reg=pickle.load(f)
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -147,7 +147,7 @@ def make_prediction(clicks, longitude, latitude, housing_median_age, total_rooms
         std_inputs = std_scaler.transform(inputs)
 
         # Make predictions on the testing dataset (using k-Nearest neighbors)
-        y_preds = knn_model.predict(std_inputs)
+        y_preds = kneighbor_reg.predict(std_inputs)
 
         #y = lin_reg.predict(std_inputs)
         formatted_y = "${:,.2f}".format(y[0])
